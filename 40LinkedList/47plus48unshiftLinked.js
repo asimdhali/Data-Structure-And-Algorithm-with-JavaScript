@@ -1,4 +1,15 @@
 // Singly Linked List Implementation
+class Node{
+    constructor(value){
+        this.value = value;
+        this.next = null
+    }
+};
+// let firstNode = new Node("First");
+let firstNode = new Node();
+// console.log(firstNode);
+
+
 class SinglyLinkedList{
     constructor(){
         this.head = null;
@@ -11,10 +22,11 @@ class SinglyLinkedList{
     }
 
     push(value){
-        let newNode = {
-            value: value,
-            next: null
-        };
+        // let newNode = {
+        //     value: value,
+        //     next: null
+        // };
+        let newNode = new Node(value);
         if(this.isEmpty()){
             this.head = newNode;
             this.tail = newNode;
@@ -50,12 +62,36 @@ class SinglyLinkedList{
         this.length--;
         return lastNode
     }
+    shift(){
+        if(!this.head){
+            return null;
+        };
+        let currentNode = this.head;
+        this.head = currentNode.next;
+        this.length--;
+        if(this.length === 0){
+            this.tail = null;
+        }
+        return currentNode;
+    }
+    unshift(value){
+        let newNode = new Node(value);
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+        }else{
+            newNode.next = this.head;
+            this.head = newNode;
+        }
+        this.length++;
+    }
 };
 
 let list = new SinglyLinkedList();
-list.push(5);
 list.push(10);
-list.push(15);
-list.pop();
-list.pop();
+list.push("Hello");
+list.shift();
+list.shift();
+list.unshift(120);
+list.unshift(140);
 console.log(list)

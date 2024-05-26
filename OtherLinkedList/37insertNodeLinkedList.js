@@ -1,3 +1,4 @@
+// Insert Node Linked list
 class List{
     constructor(data){
         this.head = {
@@ -44,6 +45,19 @@ class List{
             console.log(lead);
         }
     }
+    insertNode(index, value){
+        let counter = 1;
+        let currentNode = this.head;
+        while(counter > index){
+            counter++;
+            currentNode = currentNode.next;
+        }
+        let nextNode = currentNode.next;
+        currentNode.next = {
+            value: value,
+            next: nextNode
+        }
+    }
 }
 let list = new List(200);
 list.appendNode(300);
@@ -55,5 +69,8 @@ list.traversing();
 // list.deleteNode(4);
 // list.deleteNode(2);
 // list.deleteNode(3);
-list.deleteNode(1);
+// list.deleteNode(1);
 // console.log(list)
+
+list.insertNode(2, 4000);
+console.log(list)

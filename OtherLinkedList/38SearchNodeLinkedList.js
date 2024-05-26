@@ -1,3 +1,4 @@
+// Search Node in Linked List, class 38 "Code Step By Step"
 class List{
     constructor(data){
         this.head = {
@@ -44,6 +45,43 @@ class List{
             console.log(lead);
         }
     }
+    insertNode(index, value){
+        let counter = 1;
+        let currentNode = this.head;
+        while(counter > index){
+            counter++;
+            currentNode = currentNode.next;
+        }
+        let nextNode = currentNode.next;
+        currentNode.next = {
+            value: value,
+            next: nextNode
+        }
+    }
+    searchNode(data){
+        let result = undefined;
+        let lead = this.head;
+        let loop = true;
+        // let counter = 1;
+        while(loop){
+            lead = lead.next;
+            loop = !!lead;
+            // console.log(lead);
+            if(loop && lead.value === data){
+                loop = false;
+                result = lead;
+            }
+        };
+        console.log(result)
+
+        // while(counter<4){
+        // while(counter<6){
+        //     lead = lead.next;
+        //     console.log(lead);
+        //     counter++;
+
+        // };
+    }
 }
 let list = new List(200);
 list.appendNode(300);
@@ -57,3 +95,10 @@ list.traversing();
 // list.deleteNode(3);
 list.deleteNode(1);
 // console.log(list)
+
+// list.insertNode(2, 4000);
+// console.log(list)
+
+list.searchNode(500);
+// list.searchNode(600);
+// list.searchNode(900);
